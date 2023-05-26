@@ -5,9 +5,8 @@ name: Angular-todos CI
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches: [ "develop" ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
