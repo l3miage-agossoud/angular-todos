@@ -1,24 +1,31 @@
 module.exports = function(config) {
   config.set({
-    frameworks: ['jasmine'],
-
+    basePath: '',
+    frameworks: ['jasmine', '@angular/cli'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('@angular/cli/plugins/karma')
+    ],
+    client: {
+      clearContext: false // laisse le navigateur exécuter les tests dans le même contexte
+    },
     files: [
-      // Spécifiez les fichiers source et les fichiers de tests
-      'src/**/*.js',
-      'test/**/*.spec.js'
+      { pattern: './src/test.ts', watched: false }
     ],
-
-    exclude: [
-      // Spécifiez les fichiers à exclure si nécessaire
-    ],
-
-    browsers: ['Chrome'], // ou tout autre navigateur pris en charge par Karma
-
-    reporters: ['progress', 'junit'], // Vous pouvez utiliser d'autres reporters selon vos besoins
-
-    junitReporter: {
-      outputDir: 'test-results', // Répertoire de sortie des rapports JUnit
-      outputFile: 'test-results.xml' // Nom du fichier de rapport JUnit
-    }
+    preprocessors: {
+      './src/test.ts': ['@angular/cli']
+    },
+    mime: {
+      'text/x-typescript': ['ts','tsx']
+    },
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    restartOnFileChange: true
   });
 };
