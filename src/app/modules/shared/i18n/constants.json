@@ -1,0 +1,16 @@
+{
+  "TODOLIST":{
+    "TITLE":"Liste de mes tâches",
+    "ADD":"Ajouter une tâche"
+  },
+  "TODOITEM":{
+    "TITLE":"Tâche",
+    "DESCRIPTION":"Description",
+    "STATUS":"Statut",
+    "STATUS-NEW":"Nouveau",
+    "STATUS-INPROGRESS":"En cours",
+    "STATUS-DONE":"Terminé",
+    "SAVE":"Sauvegarder",
+    "CANCEL":"Annuler"
+  }
+}

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Todo } from '../interfaces/todo';
 import { Observable } from 'rxjs/internal/Observable';
 
-export const _urlDB = '@modules/shared/data/database-todo.json';
+export const _urlDB = '../../../assets/data/database-todo.json';
 
 export const httpOptions = {
   headers: new HttpHeaders({

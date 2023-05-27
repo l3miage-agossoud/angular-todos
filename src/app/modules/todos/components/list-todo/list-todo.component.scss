@@ -1,0 +1,37 @@
+main {
+  padding: 20px;
+}
+
+.todo-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.todos .state {
+  font-style: italic;
+  color: #888;
+}
+
+.conteneur {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+h1 {
+  text-align: center
+}
+
+.pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  text-align: center;
+  background-color: #eee;
+  margin: 10px;
+}

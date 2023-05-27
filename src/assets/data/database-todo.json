@@ -10,5 +10,17 @@
   {
     "title": "The Godfather: Part II",
     "state": "false"
+  },
+  {
+    "title": "Répondre aux mails",
+    "state": "false"
+  },
+  {
+    "title": "Préparer la réunion",
+    "state": "false"
+  },
+  {
+    "title": "Faire les courses",
+    "state": "false"
   }
 ]
