@@ -64,5 +64,7 @@ jobs:
 
     - name: Deploy to production
       run: |
+        npm install
+        npm start &
         # Exécutez ici les commandes nécessaires pour déployer votre application
         # par exemple, déployer sur un serveur, utiliser un service de déploiement, etc.
