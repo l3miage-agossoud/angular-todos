@@ -2,10 +2,7 @@
     <h2 class="todo-title"> {{ TODO.TODOLIST.TITLE }} </h2>
   <div class="conteneur">
     <div *ngFor="let todo of todos" class="colonne">
-      <div  class="pad">
-        <h3> {{todo.title}} </h3>
-        <span class="state"> {{todo.state}}</span>
-      </div>
+     <app-todo-card [todo]="todo"></app-todo-card>
     </div>
   </div>
 </main>

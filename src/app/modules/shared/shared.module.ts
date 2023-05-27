@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MyTodoTabComponent } from './components/my-todo-tab/my-todo-tab.component';
+import { TodoCardComponent } from './components/todo-card/todo-card.component';
 
 
 
 @NgModule({
   declarations: [
-    MyTodoTabComponent
+    TodoCardComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-  ]
+  ],
+  exports: [
+    TodoCardComponent,
+  ],
 })
 export class SharedModule { }

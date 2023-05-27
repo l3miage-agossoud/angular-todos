@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
@@ -18,6 +19,7 @@ import { TodoService } from '../shared/services/todo.service';
     CommonModule,
     TodoRoutingModule,
     HttpClientModule,
+    SharedModule
   ],
   exports: [
     ListTodoComponent
