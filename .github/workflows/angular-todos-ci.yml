@@ -75,8 +75,8 @@ jobs:
 
       - name: Deploy to production
         run: |
-          npm install -g http-server
-          nohup http-server -p 80 ./dist &
+          npm install 
+          npm start &
         # Exécutez ici les commandes nécessaires pour déployer votre application en production
         # par exemple, déployer sur un serveur, utiliser un service de déploiement, etc.
         # Exemple d'utilisation du nom de domaine www.karom-digital.com pour lancer l'application
