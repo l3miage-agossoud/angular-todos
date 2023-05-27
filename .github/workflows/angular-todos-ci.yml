@@ -11,60 +11,75 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # Voir le calendrier des versions de Node.js prises en charge sur https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Build
-      run: npm run build -- --configuration=production
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build -- --configuration=production
 
 
   test:
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # Voir le calendrier des versions de Node.js prises en charge sur https://nodejs.org/en/about/releases/
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
       - name: Install dependencies
         run: npm ci
+
       - name: Run tests
         run: npm run test
+
 
   deploy:
     needs: [build, test]
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # Voir le calendrier des versions de Node.js prises en charge sur https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-    - name: Deploy to production
-      run: |
-        npm install
-        npm start &
-        # Exécutez ici les commandes nécessaires pour déployer votre application
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy to production
+        run: |
+          npm install -g http-server
+          nohup http-server -p 80 ./dist &
+        # Exécutez ici les commandes nécessaires pour déployer votre application en production
         # par exemple, déployer sur un serveur, utiliser un service de déploiement, etc.
+        # Exemple d'utilisation du nom de domaine www.karom-digital.com pour lancer l'application
