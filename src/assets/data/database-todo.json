@@ -1,26 +1,26 @@
 [
   {
     "title": "The Shawshank Redemption",
-    "state": "false"
+    "status": "Terminée"
   },
   {
     "title": "The Godfather",
-    "state": "false"
+    "status": "Commencée"
   },
   {
     "title": "The Godfather: Part II",
-    "state": "false"
+    "status": "Terminée"
   },
   {
     "title": "Répondre aux mails",
-    "state": "false"
+    "status": "Commencée"
   },
   {
     "title": "Préparer la réunion",
-    "state": "false"
+    "status": "Terminée"
   },
   {
     "title": "Faire les courses",
-    "state": "false"
+    "status": "Commencée"
   }
 ]

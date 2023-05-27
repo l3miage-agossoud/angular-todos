@@ -13,6 +13,11 @@ export class TodoCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('todo', this.todo.status);
+  }
+
+  changeStatus(status: string): string {
+    return status === 'Commencée' ? 'Terminée' : '';
   }
 
 

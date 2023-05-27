@@ -1,4 +1,4 @@
-<div  class="pad">
+<div *ngIf="todo" class="pad">
   <h3> {{todo.title}} </h3>
-  <span class="state"> {{todo.state}}</span>
+  <span class="state"> {{ todo.status }}</span>
 </div>

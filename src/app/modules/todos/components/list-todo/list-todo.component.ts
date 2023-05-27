@@ -21,7 +21,6 @@ export class ListTodoComponent implements OnInit {
   ngOnInit(): void {
     this.todoService.getTodos().pipe(tap((todos: Todo[]) => {
       this.todos = todos;
-      console.log(todos);
     })).subscribe();
   }
 
