@@ -30,7 +30,7 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row
-      matRipple
+
       *matRowDef="let row; columns: displayedColumns;"
       [ngClass]="row.state ? 'barre' : '' "
       ></mat-row>
