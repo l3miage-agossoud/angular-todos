@@ -4,7 +4,6 @@ import { TodoService } from 'src/app/modules/shared/services/todo.service';
 import { Todo } from 'src/app/modules/shared/interfaces/todo';
 import { tap } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-list-todo',
   templateUrl: './list-todo.component.html',
@@ -12,15 +11,21 @@ import { tap } from 'rxjs/operators';
 })
 export class ListTodoComponent implements OnInit {
 
+  displayedColumns: string[] = ['title', 'state'];
+  dataSource: Todo[] = [];
   public TODO = constantsData;
-
-  todos: Todo[] = [];
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.getAllTodo();
+  }
+
+  getAllTodo() {
     this.todoService.getTodos().pipe(tap((todos: Todo[]) => {
-      this.todos = todos;
+      const todosEnded = todos.filter((todo: Todo) => todo.state === true);
+      const todosNotEnded = todos.filter((todo: Todo) => todo.state === false);
+      this.dataSource = [...todosNotEnded, ...todosEnded];
     })).subscribe();
   }
 

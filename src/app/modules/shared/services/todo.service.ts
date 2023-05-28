@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Todo } from '../interfaces/todo';
 import { Observable } from 'rxjs/internal/Observable';
 
-export const _urlDB = '../../../assets/data/database-todo.json';
-
 export const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -16,6 +14,8 @@ export const httpOptions = {
 })
 export class TodoService {
 
+  private _jsonURL = 'http://localhost:3000/todos';
+
   todos: Todo[] = [];
 
   constructor(private http: HttpClient) { }
@@ -26,6 +26,6 @@ export class TodoService {
    * @memberof TodoService
    */
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(_urlDB);
+    return this.http.get<Todo[]>(this._jsonURL);
   }
 }

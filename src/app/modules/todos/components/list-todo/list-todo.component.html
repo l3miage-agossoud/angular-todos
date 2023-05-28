@@ -1,8 +1,30 @@
 <main>
-    <h2 class="todo-title"> {{ TODO.TODOLIST.TITLE }} </h2>
-  <div class="conteneur">
-    <div *ngFor="let todo of todos" class="colonne">
-     <app-todo-card [todo]="todo"></app-todo-card>
-    </div>
-  </div>
+  <h2 class="todo-title"> {{ TODO.TODOLIST.TITLE }} </h2>
+
+
+<mat-table [dataSource]="dataSource " class="mat-elevation-z8">
+  <ng-container matColumnDef="title">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+      {{element.title}}
+
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="state">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+
+
+    {{ element.state ? TODO.TODOLIST.STATE_END :TODO.TODOLIST.STATE_BIGIN  }}
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+
+    *matRowDef="let row; columns: displayedColumns;"
+    ></mat-row>
+</mat-table>
 </main>
