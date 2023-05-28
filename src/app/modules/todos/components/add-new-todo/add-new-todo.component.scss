@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+.todo-card-container{
+  justify-content: center;
+  //margin: 3rem !important;
+}
+
+.todo-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.todo-card {
+  width: 100%;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.button--group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px 15px 0 0;
+
+  &__space--between {
+    margin-right: 15px;
+  }
+}

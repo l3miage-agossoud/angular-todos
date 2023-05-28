@@ -2,6 +2,9 @@
     <h2 class="todo-title"> {{ TODO.TODOLIST.TITLE }} </h2>
 
 
+    <div class="button--group">
+      <button mat-flat-button color="primary" (click)="addNewTodo()">Ajouter un todo</button>
+    </div>
   <mat-table [dataSource]="dataSource " class="mat-elevation-z8">
     <ng-container matColumnDef="title">
       <mat-header-cell mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
@@ -20,7 +23,7 @@
             class="example-margin"
             [checked]="element.state"
             [disabled]="element.state"
-            (click)="changeState(element)"
+            (click)="$event.stopPropagation(); changeStateTodo(element)"
             >
             {{ element.state ? TODO.TODOLIST.STATE_END :TODO.TODOLIST.STATE_BIGIN  }}
           </mat-checkbox>

@@ -1,3 +1,11 @@
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
 main {
   padding: 20px;
 }
@@ -8,15 +16,10 @@ main {
 }
 
 .button--group {
-  display: flex;
-  flex-direction: row;
-  max-width: 230px;
-  justify-content: space-around;
-  margin: 15px 15px 0 0;
-}
 
-.desc{
-  //margin-top: 15px !important;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 15px 0 0;
 }
 
 .state-end-color{
