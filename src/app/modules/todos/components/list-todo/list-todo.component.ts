@@ -4,6 +4,7 @@ import { TodoService } from 'src/app/modules/shared/services/todo.service';
 import { Todo } from 'src/app/modules/shared/interfaces/todo';
 import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-todo',
@@ -19,7 +20,9 @@ export class ListTodoComponent implements OnInit {
   todoUpdated!: Todo;
   checked = false;
 
-  constructor(private todoService: TodoService) { }
+  constructor(
+    private todoService: TodoService,
+    private route: Router ) { }
 
   ngOnInit(): void {
     this.getAllTodo();
@@ -44,7 +47,11 @@ export class ListTodoComponent implements OnInit {
         this.getAllTodo();
       }
     );
+  }
 
-}
+  viewDetailTodo($event: any) {
+    console.log($event);
+    this.route.navigate(['/todos', $event.id]);
+  }
 
 }

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { TodoRoutingModule } from './todo-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TodoComponent } from './components/todo/todo.component';
 import { TodoService } from '../shared/services/todo.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -19,6 +18,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ListTodoComponent,
-    TodoComponent
+    DetailTodoComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +48,7 @@ import { FormsModule } from '@angular/forms';
     MatRadioModule,
     MatSlideToggleModule,
     MatRippleModule,
+    MatButtonModule,
   ],
   exports: [
     ListTodoComponent

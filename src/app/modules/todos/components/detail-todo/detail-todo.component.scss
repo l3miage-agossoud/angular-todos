@@ -1,0 +1,30 @@
+main {
+  padding: 20px;
+}
+
+.todo-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.button--group {
+  display: flex;
+  flex-direction: row;
+  max-width: 230px;
+  justify-content: space-around;
+  margin: 15px 15px 0 0;
+}
+
+.desc{
+  //margin-top: 15px !important;
+}
+
+.state-end-color{
+  font-weight: 700;
+  color: green;
+}
+
+.state-bigin-color{
+  font-weight: 700;
+  color: red;
+}

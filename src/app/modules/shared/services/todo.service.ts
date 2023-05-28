@@ -30,7 +30,12 @@ export class TodoService {
     return this.http.get<Todo[]>(this._jsonURL, httpOptions);
   }
 
-  getTodosById(id: any): Observable<Todo> {
+  /**
+   * @description Get todo by id
+   * @param {number} id
+   * @return {*}  {Observable<Todo>}
+   */
+  getTodo(id: number): Observable<Todo> {
     return this.http.get<Todo>(`${this._jsonURL}/${id}`);
   }
 
