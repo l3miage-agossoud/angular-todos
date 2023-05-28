@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "The Shawshank Redemption",
+      "state": true
+    },
+    {
+      "id": 2,
+      "title": "The Godfather",
+      "state": true
+    },
+    {
+      "id": 3,
+      "title": "The Godfather: Part II",
+      "state": false
+    },
+    {
+      "id": 4,
+      "title": "Répondre aux mails",
+      "state": true
+    },
+    {
+      "id": 5,
+      "title": "Préparer la réunion",
+      "state": false
+    },
+    {
+      "id": 6,
+      "title": "Faire les courses",
+      "state": true
+    }
+  ]
+}

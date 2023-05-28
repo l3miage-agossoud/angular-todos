@@ -3,7 +3,7 @@ import * as constantsData from '../../../../modules/shared/i18n/constants.json';
 import { TodoService } from 'src/app/modules/shared/services/todo.service';
 import { Todo } from 'src/app/modules/shared/interfaces/todo';
 import { tap } from 'rxjs/operators';
-
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-list-todo',
@@ -12,16 +12,39 @@ import { tap } from 'rxjs/operators';
 })
 export class ListTodoComponent implements OnInit {
 
+  displayedColumns: string[] = ['title', 'state'];
+  dataSource: Todo[] = [];
   public TODO = constantsData;
 
-  todos: Todo[] = [];
+  todoUpdated!: Todo;
+  checked = false;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.getAllTodo();
+  }
+
+  getAllTodo() {
     this.todoService.getTodos().pipe(tap((todos: Todo[]) => {
-      this.todos = todos;
+      const todosEnded = todos.filter((todo: Todo) => todo.state === true);
+      const todosNotEnded = todos.filter((todo: Todo) => todo.state === false);
+      this.dataSource = [...todosNotEnded, ...todosEnded];
     })).subscribe();
   }
+
+  changeState($event: any) {
+    this.todoUpdated = {
+      id: $event.id,
+      title: $event.title,
+      state: true,
+    };
+    this.todoService.updateTodo(this.todoUpdated).subscribe(
+      () => {
+        this.getAllTodo();
+      }
+    );
+
+}
 
 }
