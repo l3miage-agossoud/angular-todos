@@ -17,25 +17,21 @@ export class DetailTodoComponent implements OnInit {
   public TODO = constantsData;
 
   todo!: Todo;
-
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+  id!: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private todoService: TodoService,
-    private route: Router) { }
+    private route: Router) {
+  }
 
   ngOnInit(): void {
-      const ID = this.activatedRoute.snapshot.params['id'];
-      console.log(ID);
-      this.todoService.getTodo(ID).pipe(
-        tap((todo) => {
-          this.todo = todo;
-          console.log(todo);
-        })
-      ).subscribe();
+    this.todoService.getTodo(this.activatedRoute.snapshot.params['id']).pipe(
+      tap((todo) => {
+        this.todo = todo;
+        console.log(todo);
+      })
+    ).subscribe();
   }
 
   onBack(){
