@@ -48,9 +48,22 @@ describe('ListTodoComponent', () => {
   });
 
   it('ngOnInit should return void', (() => {
-    const newAdd: Todo = JSON.parse(sessionStorage.getItem('newTodo') as string);
-    component.newTodo = newAdd;
+    const newTodo = JSON.parse(sessionStorage.getItem('newTodo') as string) as Todo;
+    component.newTodo = newTodo;
     expect(component.newTodo?.title).toEqual('' || undefined as unknown as string);
+
+    const todosEnded = todoMocked.todos3.filter(
+      (todo: Todo) => todo.state === true && todo.id !== newTodo?.id
+    );
+    const todosNotEnded = todoMocked.todos3.filter(
+      (todo: Todo) => todo.state === false && todo.id !== newTodo?.id
+    );
+    const newAdd2 = todoMocked.todos3.filter(
+      (todo: Todo) => todo.id = newTodo?.id
+    );
+    component.dataSource = [...newAdd2, ...todosNotEnded.reverse(), ...todosEnded];
+    expect(component.dataSource.length).toBe(4);
+    expect(component.dataSource).toEqual(todoMocked.todos3);
   }));
 
   it('getAllTodo should return void', () => {
