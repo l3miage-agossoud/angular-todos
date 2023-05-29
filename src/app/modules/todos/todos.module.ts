@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { TodoRoutingModule } from './todo-routing.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TodoService } from '../shared/services/todo.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -20,6 +20,9 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { DetailTodoComponent } from './components/detail-todo/detail-todo.component';
 import {MatButtonModule} from '@angular/material/button';
+import { AddNewTodoComponent } from './components/add-new-todo/add-new-todo.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -27,7 +30,8 @@ import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     ListTodoComponent,
-    DetailTodoComponent
+    DetailTodoComponent,
+    AddNewTodoComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +53,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSlideToggleModule,
     MatRippleModule,
     MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ListTodoComponent

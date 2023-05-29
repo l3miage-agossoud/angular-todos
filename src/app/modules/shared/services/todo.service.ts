@@ -1,16 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { Todo } from '../interfaces/todo';
 import { Observable } from 'rxjs/internal/Observable';
-import { Subject } from 'rxjs/internal/Subject';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 export const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
   })
 };
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +17,7 @@ export class TodoService {
   private _jsonURL : string = 'http://localhost:3000/todos';
 
   todos: Todo[] = [];
+  emptyTodo!: Todo;
 
   constructor(private http: HttpClient) { }
 
@@ -45,7 +44,19 @@ export class TodoService {
    * @return {*}  {Observable<Todo>}
    */
   updateTodo(todo: Todo): Observable<Todo> {
-    console.log(todo);
     return this.http.put<Todo>(`${this._jsonURL}/${todo.id}`, todo, httpOptions);
+  }
+
+  /**
+   * @description Add a todo
+   * @param {Todo} todo
+   * @return {*} {Observable<Todo>}
+   */
+  addTodo(todo: Todo): Observable<Todo[]> {
+    return this.http.post<Todo[]>(`${this._jsonURL}`, JSON.stringify(todo), httpOptions).pipe(
+      tap((_todos) => {
+        console.log(_todos);
+      })
+    );
   }
 }

@@ -8,12 +8,12 @@
     {
       "id": 2,
       "title": "The Godfather",
-      "state": false
+      "state": true
     },
     {
       "id": 3,
       "title": "The Godfather: Part II",
-      "state": false
+      "state": true
     },
     {
       "id": 4,
@@ -23,11 +23,60 @@
     {
       "id": 5,
       "title": "Préparer la réunion",
-      "state": false
+      "state": true
     },
     {
       "id": 6,
       "title": "Faire les courses",
+      "state": true
+    },
+    {
+      "id": 7,
+      "title": "Je vais à la banque",
+      "state": true
+    },
+    {
+      "id": 8,
+      "title": "Je vais à une formation le 10 juin prochain",
+      "state": false,
+      "description": "Formation d'angular"
+    },
+    {
+      "id": 9,
+      "title": "RETARD",
+      "state": false,
+      "description": "RETARD"
+    },
+    {
+      "id": 10,
+      "title": "FERIE",
+      "state": false,
+      "description": "FERIE"
+    },
+    {
+      "id": 11,
+      "title": "AGENDA",
+      "state": false,
+      "description": "AGENDA"
+    },
+    {
+      "id": 12,
+      "title": "J'ai un rendez-vous avec un client américain",
+      "state": true
+    },
+    {
+      "id": 13,
+      "title": "J'échange avec John demain",
+      "state": true
+    },
+    {
+      "id": 14,
+      "title": "Je présente le projet échange de jouets en juin 2023",
+      "state": true
+    },
+    {
+      "id": 15,
+      "title": "AZERTY",
       "state": true
     }
   ]

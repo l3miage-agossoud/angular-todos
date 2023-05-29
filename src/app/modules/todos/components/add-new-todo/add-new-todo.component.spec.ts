@@ -1,10 +1,13 @@
-import { MainHeaderComponent } from './../main-header/main-header.component';
+import { TodoRoutingModule } from './../../todo-routing.module';
+import { TodoService } from 'src/app/modules/shared/services/todo.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TemplateComponent } from './template.component';
+import { AddNewTodoComponent } from './add-new-todo.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -20,25 +23,28 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
-import { TodoRoutingModule } from 'src/app/modules/todos/todo-routing.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('TemplateComponent', () => {
-  let component: TemplateComponent;
-  let fixture: ComponentFixture<TemplateComponent>;
+describe('AddNewTodoComponent', () => {
+  let component: AddNewTodoComponent;
+  let fixture: ComponentFixture<AddNewTodoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TemplateComponent, MainHeaderComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [AddNewTodoComponent],
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-      ]
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [ TodoService  ]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(TemplateComponent);
+    fixture = TestBed.createComponent(AddNewTodoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

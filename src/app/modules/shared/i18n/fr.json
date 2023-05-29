@@ -15,5 +15,8 @@
     "STATUS-DONE":"Terminé",
     "SAVE":"Sauvegarder",
     "CANCEL":"Annuler"
+  },
+  "TODO":{
+    "ADD":"Ajouter une tâche"
   }
 }
