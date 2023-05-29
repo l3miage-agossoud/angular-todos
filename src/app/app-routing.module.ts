@@ -4,10 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { TemplateComponent } from './modules/template/components/template/template.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "", redirectTo: "/todos", pathMatch: "full" },
   {
     path: "",
-    loadChildren: () => import('./modules/template/template.module').then(m => m.TemplateModule),
+    loadChildren: () => import('./modules/todos/todos.module').then(m => m.TodosModule),
   },
 ];
 

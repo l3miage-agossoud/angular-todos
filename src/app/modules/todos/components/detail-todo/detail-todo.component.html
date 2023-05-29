@@ -1,0 +1,26 @@
+<main>
+  <h2 class="todo-title"> {{ TODO.TODODETAIL.TITLE }} </h2>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> {{todo?.title }} </mat-card-title>
+      <mat-card-subtitle>
+        Statut :
+        <span [ngClass]="[todo?.state ?'state-end-color':'state-bigin-color']">
+          {{ todo?.state ? TODO.TODOLIST.STATE_END :TODO.TODOLIST.STATE_BIGIN  }}
+        </span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-subtitle class="desc">
+        Description :
+      </mat-card-subtitle>
+      <h4>{{todo?.description}}</h4>
+    </mat-card-content>
+    <mat-card-actions class="button--group">
+      <button mat-stroked-button (click)="onBack()"  color="primary">Retour</button>
+      <button mat-flat-button color="primary">Modifier</button>
+    </mat-card-actions>
+  </mat-card>
+</main>
+

@@ -6,10 +6,10 @@
     "STATE_BIGIN": "Commencée",
     "STATE_END": "Terminée"
   },
-  "TODOITEM":{
-    "TITLE":"Tâche",
+  "TODODETAIL":{
+    "TITLE":"Détail de ma tâche",
     "DESCRIPTION":"Description",
-    "STATUS":"Statut",
+    "STATE":"Statut",
     "STATUS-NEW":"Nouveau",
     "STATUS-INPROGRESS":"En cours",
     "STATUS-DONE":"Terminé",
