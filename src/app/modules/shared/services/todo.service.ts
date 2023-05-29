@@ -52,11 +52,7 @@ export class TodoService {
    * @param {Todo} todo
    * @return {*} {Observable<Todo>}
    */
-  addTodo(todo: Todo): Observable<Todo[]> {
-    return this.http.post<Todo[]>(`${this._jsonURL}`, JSON.stringify(todo), httpOptions).pipe(
-      tap((_todos) => {
-        console.log(_todos);
-      })
-    );
+  addTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(`${this._jsonURL}`, JSON.stringify(todo), httpOptions);
   }
 }

@@ -44,19 +44,19 @@
     {
       "id": 9,
       "title": "RETARD",
-      "state": false,
+      "state": true,
       "description": "RETARD"
     },
     {
       "id": 10,
       "title": "FERIE",
-      "state": false,
+      "state": true,
       "description": "FERIE"
     },
     {
       "id": 11,
       "title": "AGENDA",
-      "state": false,
+      "state": true,
       "description": "AGENDA"
     },
     {
@@ -78,6 +78,12 @@
       "id": 15,
       "title": "AZERTY",
       "state": true
+    },
+    {
+      "id": 16,
+      "title": "AGENDA",
+      "state": true,
+      "description": "AAZERTYUIO"
     }
   ]
 }

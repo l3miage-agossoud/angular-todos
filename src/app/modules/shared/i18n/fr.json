@@ -8,8 +8,8 @@
   },
   "TODODETAIL":{
     "TITLE":"Détail de ma tâche",
-    "DESCRIPTION":"Description",
-    "STATE":"Statut",
+    "DESCRIPTION":"Description :",
+    "STATE":"Statut :",
     "STATUS-NEW":"Nouveau",
     "STATUS-INPROGRESS":"En cours",
     "STATUS-DONE":"Terminé",
@@ -17,6 +17,10 @@
     "CANCEL":"Annuler"
   },
   "TODO":{
-    "ADD":"Ajouter une tâche"
-  }
+    "ADD":"Ajouter",
+    "TITLE": "Titre",
+    "DESCRIPTION": "Description",
+    "STATE": "Statut"
+  },
+  "TODOBACK":"Retour"
 }

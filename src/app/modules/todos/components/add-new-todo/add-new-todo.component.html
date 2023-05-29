@@ -1,20 +1,16 @@
 <main class="todo-contanier">
-  <h2 class="todo-title"> {{ TODO.TODO.ADD }} </h2>
+  <h2 class="todo-title"> {{ TODO.TODOLIST.ADD }} </h2>
   <mat-card class="todo-card  todo-card-container">
     <form
       [formGroup]="formTodo"
       novalidate
-      class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Titre</mat-label>
-        <input matInput
-          formControlName="title"
-        >
-
+      class="form-todo">
+      <mat-form-field class="form-todo-field">
+        <mat-label>{{ TODO.TODO.TITLE }}</mat-label>
+        <input matInput formControlName="title">
       </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Description</mat-label>
+      <mat-form-field class="form-todo-field">
+        <mat-label>{{ TODO.TODO.DESCRIPTION }}</mat-label>
         <textarea
           matInput
           formControlName="description"
@@ -26,13 +22,13 @@
           mat-stroked-button
           class="button--group__space--between"
           (click)="onBack()"
-          color="primary">Retour</button>
+          color="primary">{{ TODO.TODOBACK }}</button>
         <button
           mat-flat-button
           [disabled]="formTodo.invalid"
           (click)="onSubmit()"
           color="primary">
-          Ajouter
+          {{ TODO.TODO.ADD }}
         </button>
       </mat-card-actions>
     </form>

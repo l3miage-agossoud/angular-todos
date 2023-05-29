@@ -14,8 +14,8 @@ import { tap } from 'rxjs/operators';
 export class DetailTodoComponent implements OnInit {
 
   public TODO = constantsData;
-
   todo!: Todo;
+  todoCurrentId!: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,11 +24,12 @@ export class DetailTodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.todoCurrentId = this.activatedRoute.snapshot.params['id'] as number;
     this.getOneTodo();
   }
 
   getOneTodo() {
-    this.todoService.getTodo(this.activatedRoute.snapshot.params['id']).pipe(
+    this.todoService.getTodo(this.todoCurrentId).pipe(
       tap((todo) => {
         this.todo = todo;
       })

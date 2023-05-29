@@ -1,12 +1,12 @@
 import { Todo } from 'src/app/modules/shared/interfaces/todo';
-import { TodoRoutingModule, routes } from './../../todo-routing.module';
+import { routes } from './../../todo-routing.module';
 import { TodoService } from 'src/app/modules/shared/services/todo.service';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ListTodoComponent } from './list-todo.component';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import * as todoMocked from '../../../../modules/shared/mocks/todoService-mocked-constants';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -14,8 +14,6 @@ import { Location } from '@angular/common';
 describe('ListTodoComponent', () => {
   let component: ListTodoComponent;
   let fixture: ComponentFixture<ListTodoComponent>;
-  let todoService: TodoService;
-  let httpMock: HttpTestingController;
   let router: Router;
   let location: Location;
 
@@ -33,7 +31,6 @@ describe('ListTodoComponent', () => {
 
     fixture = TestBed.createComponent(ListTodoComponent);
     component = fixture.componentInstance;
-    httpMock = TestBed.inject(HttpTestingController);
     location = TestBed.inject(Location);
     router = TestBed.inject(Router);
 

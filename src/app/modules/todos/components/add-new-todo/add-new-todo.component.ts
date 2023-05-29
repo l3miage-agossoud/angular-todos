@@ -26,7 +26,6 @@ export class AddNewTodoComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       description: new FormControl('')
     });
-
     this.getAllTodo();
   }
 

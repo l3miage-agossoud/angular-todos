@@ -7,6 +7,13 @@ export const todoTesting: Todo = {
   description: "Test"
 };
 
+export const todoAdded: Todo = {
+  id: 17,
+  title: 'Todo title',
+  state: false,
+  description: 'Todo description'
+};
+
 export const todo1: Todo = {
   id: 1,
   title: "The Shawshank Redemption",
