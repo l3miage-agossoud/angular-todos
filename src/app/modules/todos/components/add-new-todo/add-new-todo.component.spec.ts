@@ -1,41 +1,31 @@
-import { TodoRoutingModule } from './../../todo-routing.module';
+import { Todo } from 'src/app/modules/shared/interfaces/todo';
+import { TodoRoutingModule, routes } from './../../todo-routing.module';
 import { TodoService } from 'src/app/modules/shared/services/todo.service';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AddNewTodoComponent } from './add-new-todo.component';
-import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRippleModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Location } from '@angular/common';
+import { of } from 'rxjs/internal/observable/of';
+import * as todoMocked from '../../../../modules/shared/mocks/todoService-mocked-constants';
 
 describe('AddNewTodoComponent', () => {
   let component: AddNewTodoComponent;
   let fixture: ComponentFixture<AddNewTodoComponent>;
+  let router: Router;
+  let location: Location;
+  let todoService: TodoService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [AddNewTodoComponent],
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         HttpClientTestingModule,
         FormsModule,
         ReactiveFormsModule
@@ -45,11 +35,48 @@ describe('AddNewTodoComponent', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(AddNewTodoComponent);
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
+    todoService = TestBed.get(TodoService);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('ngOnInit should initialize instance of FormGroup call getAllTodo', () => {
+    spyOn(component, 'getAllTodo');
+    component.ngOnInit();
+    expect(component.formTodo).toBeTruthy();
+    expect(component.formTodo instanceof FormGroup).toBeTrue();
+    expect(component.formTodo.get('title')).toBeTruthy();
+    expect(component.formTodo.get('description')).toBeTruthy();
+    expect(component.getAllTodo).toHaveBeenCalled();
+  });
+
+  it('getAllTodo should return void but initialize todos', () => {
+    spyOn(todoService, 'getTodos').and.returnValue(of(todoMocked.todos1));
+    component.getAllTodo();
+    expect(component.todos).toEqual(todoMocked.todos1);
+  });
+
+  it(`onBack should retrun void`, fakeAsync(() => {
+    router.navigate(['todos']);
+    tick();
+    expect(location.path()).toBe('/todos');
+  }));
+
+  it('should not add new todo if formTodo is invalid', () => {
+    let routerSpy = spyOn(router, 'navigate');
+    component.formTodo.get('title')?.setValue('');
+    component.formTodo.get('description')?.setValue('');
+
+    const newTodo = sessionStorage.getItem('newTodo');
+    component.onSubmit();
+
+    expect(component.todo).toBeUndefined();
+    expect(newTodo).toBeNull();
   });
 });

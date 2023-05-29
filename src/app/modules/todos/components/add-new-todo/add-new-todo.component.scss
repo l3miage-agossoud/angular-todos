@@ -16,7 +16,6 @@ main {
 }
 .todo-card-container{
   justify-content: center;
-  //margin: 3rem !important;
 }
 
 .todo-title {
@@ -27,13 +26,13 @@ main {
 .todo-card {
   width: 100%;
 }
-.example-form {
+.form-todo {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
 }
 
-.example-full-width {
+.form-todo-field {
   width: 100%;
 }
 
