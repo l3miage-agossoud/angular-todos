@@ -1,0 +1,19 @@
+{
+  "TODOLIST":{
+    "TITLE": "Liste de mes tâches",
+    "ADD": "Ajouter une tâche",
+    "UPDATE_STATE": "Changer l'état",
+    "STATE_BIGIN": "Commencée",
+    "STATE_END": "Terminée"
+  },
+  "TODOITEM":{
+    "TITLE":"Tâche",
+    "DESCRIPTION":"Description",
+    "STATUS":"Statut",
+    "STATUS-NEW":"Nouveau",
+    "STATUS-INPROGRESS":"En cours",
+    "STATUS-DONE":"Terminé",
+    "SAVE":"Sauvegarder",
+    "CANCEL":"Annuler"
+  }
+}
