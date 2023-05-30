@@ -38,7 +38,7 @@
     {
       "id": 8,
       "title": "Je vais à une formation le 10 juin prochain",
-      "state": false,
+      "state": true,
       "description": "Formation d'angular"
     },
     {
@@ -62,17 +62,17 @@
     {
       "id": 12,
       "title": "J'ai un rendez-vous avec un client américain",
-      "state": true
+      "state": false
     },
     {
       "id": 13,
       "title": "J'échange avec John demain",
-      "state": true
+      "state": false
     },
     {
       "id": 14,
       "title": "Je présente le projet échange de jouets en juin 2023",
-      "state": true
+      "state": false
     },
     {
       "id": 15,
@@ -82,8 +82,38 @@
     {
       "id": 16,
       "title": "AGENDA",
-      "state": true,
+      "state": false,
       "description": "AAZERTYUIO"
+    },
+    {
+      "id": 17,
+      "title": "Aller jouer au foot demain",
+      "state": false,
+      "description": "Football"
+    },
+    {
+      "id": 18,
+      "title": "J'irai voir GM ce soir",
+      "state": false,
+      "description": "Sortie en famille"
+    },
+    {
+      "id": 19,
+      "title": "A",
+      "state": false,
+      "description": "A"
+    },
+    {
+      "id": 20,
+      "title": "Seminaire à Ouga",
+      "state": true,
+      "description": "Details"
+    },
+    {
+      "id": 21,
+      "title": "Je vais à une réunion familiale",
+      "state": false,
+      "description": "Famille"
     }
   ]
 }

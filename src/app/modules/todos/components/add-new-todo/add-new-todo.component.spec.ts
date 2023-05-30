@@ -49,15 +49,15 @@ describe('AddNewTodoComponent', () => {
   it('ngOnInit should initialize instance of FormGroup call getAllTodo', () => {
     spyOn(component, 'getAllTodo');
     component.ngOnInit();
-    expect(component.formTodo).toBeTruthy();
-    expect(component.formTodo instanceof FormGroup).toBeTrue();
-    expect(component.formTodo.get('title')).toBeTruthy();
-    expect(component.formTodo.get('description')).toBeTruthy();
+    expect(component.todoForm).toBeTruthy();
+    expect(component.todoForm instanceof FormGroup).toBeTrue();
+    expect(component.todoForm.get('title')).toBeTruthy();
+    expect(component.todoForm.get('description')).toBeTruthy();
     expect(component.getAllTodo).toHaveBeenCalled();
   });
 
   it('getAllTodo should return void but initialize todos', () => {
-    spyOn(todoService, 'getTodos').and.returnValue(of(todoMocked.todos1));
+    spyOn(todoService, 'getAllTodo').and.returnValue(of(todoMocked.todos1));
     component.getAllTodo();
     expect(component.todos).toEqual(todoMocked.todos1);
   });
@@ -70,8 +70,8 @@ describe('AddNewTodoComponent', () => {
 
   it('should not add new todo if formTodo is invalid', () => {
     let routerSpy = spyOn(router, 'navigate');
-    component.formTodo.get('title')?.setValue('');
-    component.formTodo.get('description')?.setValue('');
+    component.todoForm.get('title')?.setValue('');
+    component.todoForm.get('description')?.setValue('');
 
     const newTodo = sessionStorage.getItem('newTodo');
     component.onSubmit();

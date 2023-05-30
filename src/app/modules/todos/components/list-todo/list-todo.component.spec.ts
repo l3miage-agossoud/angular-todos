@@ -79,19 +79,19 @@ describe('ListTodoComponent', () => {
     expect(component.dataSource).toEqual(todoMocked.todos1);
   });
 
-  it('changeStateTodo should return void', () => {
+  it('changeTodoState should return void', () => {
     const currentTodoUpdated = todoMocked.todo8;
-    component.todoUpdated = {
+    component.updatedTodo = {
       id: currentTodoUpdated.id,
       title: currentTodoUpdated.title,
       state: true,
       description: currentTodoUpdated.description
     }
-    component.changeStateTodo(component.todoUpdated);
+    component.changeTodoState(component.updatedTodo);
 
-    expect(component.todoUpdated.id).toEqual(todoMocked.todoUpdated.id);
-    expect(component.todoUpdated.state).toEqual(todoMocked.todoUpdated.state);
-    expect(component.todoUpdated.description).toEqual(todoMocked.todoUpdated.description);
+    expect(component.updatedTodo.id).toEqual(todoMocked.todoUpdated.id);
+    expect(component.updatedTodo.state).toEqual(todoMocked.todoUpdated.state);
+    expect(component.updatedTodo.description).toEqual(todoMocked.todoUpdated.description);
 
   });
 

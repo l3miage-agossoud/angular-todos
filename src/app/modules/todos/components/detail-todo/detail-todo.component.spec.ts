@@ -46,10 +46,10 @@ describe('DetailTodoComponent', () => {
 
   it(`getOneTodo should return void but you need a 'Detail of todo'`, () => {
     const currentTodoMocked: Todo = todoMocked.todo1;
-    component.todoCurrentId = 1;
+    component.currentTodoId = 1;
     spyOn(todoService, 'getTodo').and.returnValue(of(currentTodoMocked));
-    component.getOneTodo();
-    expect(todoService.getTodo).toHaveBeenCalledOnceWith(component.todoCurrentId);
+    component.getTodo();
+    expect(todoService.getTodo).toHaveBeenCalledOnceWith(component.currentTodoId);
     console.log(component.todo);
     expect(component.todo).toEqual(currentTodoMocked);
   });

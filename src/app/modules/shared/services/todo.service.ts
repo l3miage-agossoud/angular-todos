@@ -25,7 +25,7 @@ export class TodoService {
    * @description Get all todos
    * @return {*}  {Observable<Todo[]>}
    */
-  getTodos(): Observable<Todo[]> {
+  getAllTodo(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this._jsonURL, httpOptions);
   }
 

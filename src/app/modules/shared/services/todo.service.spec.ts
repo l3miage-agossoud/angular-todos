@@ -27,8 +27,8 @@ describe('TodoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#getTodos should return an Observable<Todo[]>', () => {
-    service.getTodos().subscribe((todos: any) => {
+  it('#getAllTodo should return an Observable<Todo[]>', () => {
+    service.getAllTodo().subscribe((todos: any) => {
       expect(todos.length).toBe(4);
       expect(todos).toEqual(todoMocked.todos1);
     });
