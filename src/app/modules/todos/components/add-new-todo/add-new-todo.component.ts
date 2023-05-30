@@ -14,7 +14,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class AddNewTodoComponent implements OnInit {
   public TODO = constantsData;
-  formTodo!: FormGroup;
+  todoForm!: FormGroup;
   todo!: Todo;
   todos!: Array<Todo>;
 
@@ -22,7 +22,7 @@ export class AddNewTodoComponent implements OnInit {
     private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.formTodo = new FormGroup({
+    this.todoForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       description: new FormControl('')
     });
@@ -30,7 +30,7 @@ export class AddNewTodoComponent implements OnInit {
   }
 
   getAllTodo() {
-    this.todoService.getTodos().pipe(
+    this.todoService.getAllTodo().pipe(
       map((todos) => { this.todos = todos; })
     ).subscribe();
   }
@@ -39,10 +39,10 @@ export class AddNewTodoComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.formTodo.valid) {
-      const title = this.formTodo.get('title')?.value;
+    if (this.todoForm.valid) {
+      const title = this.todoForm.get('title')?.value;
       const state = false;
-      const description = this.formTodo.get('description')?.value
+      const description = this.todoForm.get('description')?.value
       const id = this.todos.length + 1;
       this.todo = {
         id,
@@ -60,5 +60,4 @@ export class AddNewTodoComponent implements OnInit {
       )
     }
   }
-
 }

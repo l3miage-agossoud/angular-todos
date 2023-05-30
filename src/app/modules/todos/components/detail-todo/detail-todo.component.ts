@@ -15,7 +15,7 @@ export class DetailTodoComponent implements OnInit {
 
   public TODO = constantsData;
   todo!: Todo;
-  todoCurrentId!: number;
+  currentTodoId!: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,12 +24,12 @@ export class DetailTodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todoCurrentId = this.activatedRoute.snapshot.params['id'] as number;
-    this.getOneTodo();
+    this.currentTodoId = this.activatedRoute.snapshot.params['id'] as number;
+    this.getTodo();
   }
 
-  getOneTodo() {
-    this.todoService.getTodo(this.todoCurrentId).pipe(
+  getTodo() {
+    this.todoService.getTodo(this.currentTodoId).pipe(
       tap((todo) => {
         this.todo = todo;
       })

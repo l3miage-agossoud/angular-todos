@@ -16,8 +16,9 @@ export class ListTodoComponent implements OnInit {
   dataSource: Todo[] = [];
   public TODO = constantsData;
 
-  todoUpdated!: Todo;
+  updatedTodo!: Todo;
   newTodo!: Todo;
+  newTodoUpdatedState!: Todo;
   checked = false;
 
   constructor(
@@ -27,42 +28,67 @@ export class ListTodoComponent implements OnInit {
   ngOnInit() {
     this.newTodo = JSON.parse(sessionStorage.getItem('newTodo') as string);
     sessionStorage.removeItem('newTodo');
+    sessionStorage.removeItem('newTodoUpdatedState');
     this.getAllTodo();
+
+
   }
 
   getAllTodo() {
-    this.todoService.getTodos().pipe(tap((todos: Todo[]) => {
-      const todosEnded = todos.filter((todo: Todo) => todo.state === true && todo.id !== this.newTodo?.id);
-      const todosNotEnded = todos.filter((todo: Todo) => todo.state === false && todo.id !== this.newTodo?.id);
-      const newAdd = todos.filter((todo: Todo) => {
-        return todo.id === this.newTodo?.id;
-    });
-      this.dataSource = [...newAdd, ...todosNotEnded.reverse(), ...todosEnded];
-    })).subscribe();
+    this.newTodoUpdatedState = JSON.parse(sessionStorage.getItem('newTodoUpdatedState') as string);
+    this.todoService.getAllTodo().pipe(
+      tap((todos: Todo[]) => {
+        const updatedTodoIndex = todos.findIndex((todo: Todo) => todo.id === this.newTodoUpdatedState?.id);
+        console.log(`1er index : `+updatedTodoIndex);
+
+        if (this.newTodoUpdatedState && this.newTodoUpdatedState.state === true) {
+          if (updatedTodoIndex !== -1) {
+            const updatedTodo = todos.splice(updatedTodoIndex, 1)[0];
+            todos.push(updatedTodo);
+          }
+        }
+
+        const todosNotEnded = todos.filter((todo: Todo) => todo.state === false && todo.id !== this.newTodo?.id);
+        const todosEnded = todos.filter((todo: Todo) => todo.state === true && todo.id !== this.newTodo?.id);
+        const newAdd = todos.filter((todo: Todo) => todo.id === this.newTodo?.id);
+        const newUpdatedTodo = todosEnded.filter((todo: Todo) => todo.id === this.newTodoUpdatedState?.id);
+
+        const todosEndedWithoutNewUpdatedTodo = todosEnded.filter((todo: Todo) => todo.id !== this.newTodoUpdatedState?.id);
+
+        this.dataSource = [...newAdd, ...todosNotEnded.reverse(), ...todosEndedWithoutNewUpdatedTodo, ...newUpdatedTodo];
+      })
+    ).subscribe(
+      () => {
+        sessionStorage.removeItem('newUpdatedTodoState');
+      }
+    );
+
     this.newTodo = {} as Todo;
+    sessionStorage.removeItem('newUpdatedTodoState');
   }
 
-  changeStateTodo($event: any) {
+  changeTodoState($event: any) {
     if($event !== undefined && $event !== null) {
-      this.todoUpdated = {
+      this.updatedTodo = {
         id: $event.id,
         title: $event.title,
         state: true,
         description: $event.description
       };
-      this.todoService.updateTodo(this.todoUpdated).subscribe(
+      this.todoService.updateTodo(this.updatedTodo).subscribe(
         () => {
+          sessionStorage.setItem('newUpdatedTodoState', JSON.stringify(this.updatedTodo));
           this.getAllTodo();
         }
       );
     }
   }
 
-  viewDetailTodo($event: any) {
+  viewTodoDetails($event: any) {
     this.route.navigate(['/todos', $event.id]);
   }
 
-  addNewTodo() {
+  addTodo() {
     this.route.navigate(['new-todo']);
   }
 
